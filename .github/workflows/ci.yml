@@ -33,3 +33,31 @@ jobs:
 
       - name: Run tests
         run: pytest -q
+
+
+  docker-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t stats-ml-api .
+
+      - name: Run Docker container
+        run: |
+          docker run -d -p 8000:8000 --name api stats-ml-api
+          sleep 8
+
+      - name: Test health endpoint
+        run: curl http://localhost:8000/health
+
+      - name: Test predict endpoint
+        run: |
+          curl -X POST http://localhost:8000/predict \
+          -H "Content-Type: application/json" \
+          -d '{}'
+
+      - name: Stop container
+        run: docker stop api.

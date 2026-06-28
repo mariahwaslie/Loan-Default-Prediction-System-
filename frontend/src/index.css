@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #fafafa;
+  --card: #ffffff;
+  --border: #eaeaea;
+  --text: #111;
+  --muted: #666;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+
+  /* 🔥 NEW FONT */
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button, input {
+  font-family: inherit;
+}
